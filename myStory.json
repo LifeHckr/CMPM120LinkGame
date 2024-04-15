@@ -1,0 +1,163 @@
+{
+    "Title": "Reap What You Sew",
+    "Credits": "Created by Jarod Spangler (jrspangl@ucsc.edu).",
+    "InitialLocation": "Intro",
+    "Inventory": {
+        "Honey": {
+            "val" : false
+        },
+        "Saltpeter": {
+            "val" : false
+        },
+        "Recipe": {
+            "val" : false
+        },
+        "Allergy": {
+            "val" : false
+        },
+        "Rotten_Meat": {
+            "val" : false
+        },
+        "Chemistry": {
+            "val" : false
+        }
+    },
+    "Locations": {
+        "Intro": {
+            "Type": "Dialogue",
+            "Body": "You are the head of a family that comes from a lineage of corrupted wealth. You have manipulated and stolen your way to good fortune, but your time is finally up. You crossed the wrong people, and you have found yourself at the wrong end of a rifle. When you finally come to the pearly gates, unexpectedly to you, you are given a chance at salvation. Reap the soul of the young master of your manor, your equally corrupt nephew. <p>You accept the offer, you are returned to earthly soil in a form where no one will recognize you. You return to the manor under the guise of being a newly hired butler. You begin plotting.</p>",
+            "Choices": [
+                {
+                    "Text": "Next",
+                    "Target": "Kitchen"
+                }
+            ]
+        },
+        "Kitchen": {
+            "Type": "Gather",
+            "Body": "This is the manor kitchen, what ingeredients can be found here?",
+            "Inspect": "The cooks are hard at work organizing ingredients for the next meal.",
+            "Requirement": "Allergy",
+            "ExtraText": "Knowing the young master is allergic to honey, you confidently grab a bottle from the kitchen.",
+            "Result": "Honey",
+            "Choices": [
+                {
+                    "Text": "Go to the library",
+                    "Target": "Library"
+                },
+                {
+                    "Text": "Go to the Foyer",
+                    "Target": "Foyer"
+                }
+            ]
+        },
+        "Library": {
+            "Type": "Library",
+            "Special_Choice": "Poison Tea",
+            "Body": "This is the manor's library.",
+            "Inspect": "This is likely the most expansive library in the county. This is where the young master spends most of his time. He has a cup of tea sitting unguarded on a desk.",
+            "FailText": "You know the young master is allergic to honey, but you have yet to get any. Perhaps the kitchen has some?",
+            "Unlock": ["Allergy", "Honey"],
+            "Choices": [
+                {
+                    "Text": "Go to the kitchen.",
+                    "Target": "Kitchen"
+                },
+                {
+                    "Text": "Go to the Foyer",
+                    "Target": "Foyer"
+                }
+            ]
+        },
+        "Foyer": {
+            "Type": "Talk",
+            "Body": "This is the manor's foyer.",
+            "Inspect": "Right now, the foyer is fairly empty. A butler is rearranging the furniture.",
+            "ExtraText": "You strike up a conversation with the butler. You quickly learn a few new things: The young master has developed a deathly allergy to honey. He has also been continuing the family traditions, by increasing the prices of necessary goods in town . And that much of the manor's staff has been relieved you're gone, though they are still very wary of your nephew.",
+            "Result": "Allergy",
+            "Choices": [
+                {
+                    "Text": "Go to the kitchen.",
+                    "Target": "Kitchen"
+                },
+                {
+                    "Text": "Go to the library.",
+                    "Target": "Library"
+                },
+                {
+                    "Text": "Go into town.",
+                    "Target": "Center"
+                }
+            ]
+        },
+        "Center": {
+            "Type": "Gather",
+            "Body": "This is the town's center.",
+            "Inspect": "People are going about their business. Lining the square, trees and plants are well manicured, except for...",
+            "Requirement": "Recipe",
+            "ExtraText": "The plan developing in your mind, you find one thing you need, you grab some rotten meat that was discarded into the grass.",
+            "Result": "Rotten_Meat",
+            "Choices": [
+                {
+                    "Text": "Go to the pub.",
+                    "Target": "Pub"
+                },
+                {
+                    "Text": "Go to the chemist.",
+                    "Target": "Chemist"
+                },
+                {
+                    "Text": "Go back to the manor.",
+                    "Target": "Foyer"
+                }
+            ]
+        },
+        "Pub": {
+            "Type": "Talk",
+            "Body": "This is the pub.",
+            "Inspect": "The pub reeks of booze and smoke. Most people seem glassy eyed, except for one stranger staring at you in the corner of the room.",
+            "ExtraText": "You walk up to a lone stranger sitting on the edge of the room. His eyes follow you as you approach. <p>\"I know what you're after. But there are ways to trick anyone, anything. Saltpeter can act as a foundation for the product, then you need something organic that represents the person. Talk to the old chemist, he'll make sure you do it right.\"</p> You ask no questions and return to the entrance.",
+            "Result": "Recipe",
+            "Choices": [
+                {
+                    "Text": "Go to the center of town.",
+                    "Target": "Center"
+                },
+                {
+                    "Text": "Go to the chemist.",
+                    "Target": "Chemist"
+                }
+            ]
+        },
+        "Chemist": {
+            "Type": "Chemist",
+            "Special_Choice": "Craft Soul",
+            "Body": "This is the town's chemist.",
+            "Inspect": "Tinctures and unfamiliar equiptment line the room. Even as the old chemist goes about his business he keeps you in his periphery",
+            "ExtraText": "You approach the old chemist, he just stares at you for a moment and nods. He hands you a vessel filled with saltpeter. He then reaches behind the counter to grab a cauldron, it will be ready the next time you enter the chemist.",
+            "FailText": "You have the saltpeter, but you need to find something organic that represents your nephew.",
+            "Requirement": "Recipe",
+            "Result": "Chemistry",
+            "Unlock": ["Chemistry", "Rotten_Meat"],
+            "Choices": [
+                {
+                    "Text": "Go to the center of town.",
+                    "Target": "Center"
+                },
+                {
+                    "Text": "Go to the pub.",
+                    "Target": "Pub"
+                }
+            ]
+        },
+        "End1": {
+            "Type": "Dialogue",
+            "Body": "You put an indulgent amount of honey in the young master's tea. You then swiftly go about the business of reorganizing the books on the library's shelves, as you wait for your nephew to fall into your web. Eventually he enters, and takes a single sip. That was all it took, for in a moment he recognized the sweet taste on his tongue, but was unable to cry out as his throat had already swollen, snuffing out his voice and the light in his eyes. <p>This is how you always were, you would do anything to benefit yourself even if it was at the cost of your own flesh and blood. You expect salvation to come quickly, but your fate is left unknown.</p>"
+        },
+        "End2": {
+            "Type": "Dialogue",
+            "Body": "You follow the instructions of the old chemist, eventually you come to create some kind of alchemical amalgamation. It does give off some of the same vibrancy as the young master. You do not know if he is worth saving, especially at the risk of your own salvation if the deception is discovered. His moral stance, or lack of, takes after you. <p>You never get any answers as your fate is left unknown.</p>"
+        }
+
+    }
+}
